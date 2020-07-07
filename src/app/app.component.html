@@ -1,20 +1,54 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<header style="width:100%; height: 47px; background-color: #55a44e; margin-bottom: 10px;">
+  <img src="assets/logo2.png" style=" display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%">
+</header>
+<div>
+  <highcharts-chart id="container" [Highcharts]="Highcharts" [constructorType]="chartConstructor"
+    [options]="mapChartOptions" [callbackFunction]="mapChartCallback" [(update)]=updateFromInput [oneToOne]="true"
+    class="boxChart__map">
+  </highcharts-chart>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div class="boxChart__container">
+  <div>
+    <!-- <ng-container *ngIf="selectedCountry !==''">
+       <highcharts-chart id="country" [Highcharts]="Highcharts" [constructorType]="countryChartConstructor"
+        [options]="countryDetailsOptions" [callbackFunction]="countryDetailsCallback"
+        [(update)]=updateCountryDetails [oneToOne]="true" >
+      </highcharts-chart> 
+      
+    </ng-container> -->
+    <div #info [ngStyle]="{'visibility': (selectedCountry==='') ? 'hidden' : 'visible'}"
+      style="width: 45vw; display: block; margin: auto; float: left;"></div>
+    <div #Bioinfo [ngStyle]="{'visibility': (selectedCountry==='') ? 'hidden' : 'visible'}"
+      style="width: 45vw; display: block; margin: auto;"></div>
+    <ng-container *ngIf="selectedCountry === ''">
+      <h2 style="display: block; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; color: #55a44e;">Select a
+        country to display details...
+      </h2>
+    </ng-container>
+  </div>
+</div>
+<hr>
+<h2 class="story__title">World Ecological Footprint</h2>
+<div class="story">
+  <div class="story__item">
+    <p class="story__paragraph">The ecological footprint measures the ecological assets that a given population requires
+      to produce the natural
+      resources it consumes (including plant-based food and fiber products, livestock and fish products, timber and
+      other forest products, space for urban infrastructure) and to absorb its waste, especially carbon emissions.</p>
+    <iframe class="story__video" src="https://www.youtube.com/embed/fACkb2u1ULY" frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="story__item">
+    <p class="story__football">
+      <span class="story__football-header">Globally, forests are lost at a rate of 48 football fields per minute.</span>
+      Growing
+      demand for forest and agricultural
+      products coupled with unsustainable practices and poor legal enforcement is at the root of this troubling trend.
+      Forests are the lifeblood of our planet and nearly half of Earth’s original forest cover has been lost.
+      Initiatives like FSC and REDD are making strides by creating market incentives to conserve them.</p>
+    <img class="story__image" src="assets/forestloss.jpg">
+  </div>
+</div>
